@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>직원이 모두 퇴사하면, 대표님은 뭐가 달라질까요? | 원제우세무사사무소</title>
+<style>
+:root{
+  --green:#2E7D4F;
+  --green-dark:#1F5A38;
+  --green-pale:#EAF4EE;
+  --green-line:#CDE4D6;
+  --ink:#22302A;
+  --ink-soft:#5A6B62;
+  --warn:#B4532A;
+  --warn-pale:#FBEFE8;
+  --paper:#FFFFFF;
+  --bg:#F6F9F7;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px}
+body{
+  font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+  word-break:keep-all;
+}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px 64px}
+
+/* 헤더 */
+header{
+  background:var(--green);
+  color:#fff;
+  padding:44px 20px 40px;
+}
+header .inner{max-width:720px;margin:0 auto}
+header .office{font-size:.85rem;opacity:.85;margin-bottom:14px}
+header h1{
+  font-size:1.7rem;
+  font-weight:800;
+  line-height:1.35;
+  letter-spacing:-.02em;
+}
+header p.lead{
+  margin-top:14px;
+  font-size:1rem;
+  opacity:.92;
+  line-height:1.6;
+}
+
+/* 한 줄 요약 */
+.summary{
+  background:var(--paper);
+  border:1.5px solid var(--green);
+  border-radius:14px;
+  padding:22px 22px;
+  margin:-26px auto 0;
+  position:relative;
+  box-shadow:0 3px 14px rgba(31,90,56,.10);
+}
+.summary strong{color:var(--green-dark)}
+.summary .tag{
+  display:inline-block;
+  background:var(--green);
+  color:#fff;
+  font-size:.78rem;
+  font-weight:700;
+  padding:3px 10px;
+  border-radius:999px;
+  margin-bottom:10px;
+}
+
+/* 섹션 공통 */
+section{margin-top:44px}
+h2{
+  font-size:1.25rem;
+  font-weight:800;
+  color:var(--green-dark);
+  letter-spacing:-.01em;
+  padding-bottom:10px;
+  border-bottom:2px solid var(--green);
+  margin-bottom:18px;
+}
+h2 .num{
+  display:inline-block;
+  background:var(--green);
+  color:#fff;
+  width:28px;height:28px;
+  border-radius:8px;
+  text-align:center;
+  line-height:28px;
+  font-size:.95rem;
+  margin-right:9px;
+  vertical-align:2px;
+}
+p.desc{color:var(--ink-soft);font-size:.95rem;margin-bottom:16px}
+
+/* 전/후 카드 */
+.before-after{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:12px;
+}
+@media(min-width:560px){.before-after{grid-template-columns:1fr 1fr}}
+.ba-card{
+  border-radius:12px;
+  padding:18px;
+  border:1px solid var(--green-line);
+  background:var(--paper);
+}
+.ba-card.before{background:#FAFBFA}
+.ba-card.after{background:var(--green-pale);border-color:var(--green)}
+.ba-card .label{
+  font-size:.8rem;
+  font-weight:700;
+  margin-bottom:8px;
+}
+.ba-card.before .label{color:var(--ink-soft)}
+.ba-card.after .label{color:var(--green-dark)}
+.ba-card ul{list-style:none}
+.ba-card li{
+  padding-left:16px;
+  position:relative;
+  font-size:.94rem;
+  margin-bottom:7px;
+}
+.ba-card li::before{
+  content:'';
+  position:absolute;left:0;top:.62em;
+  width:6px;height:6px;border-radius:50%;
+}
+.ba-card.before li::before{background:#B9C4BE}
+.ba-card.after li::before{background:var(--green)}
+
+/* 주의 박스 */
+.warn-box{
+  background:var(--warn-pale);
+  border-left:4px solid var(--warn);
+  border-radius:0 10px 10px 0;
+  padding:15px 17px;
+  margin-top:14px;
+  font-size:.93rem;
+}
+.warn-box b{color:var(--warn)}
+
+/* 팁 박스 */
+.tip-box{
+  background:var(--green-pale);
+  border-left:4px solid var(--green);
+  border-radius:0 10px 10px 0;
+  padding:15px 17px;
+  margin-top:14px;
+  font-size:.93rem;
+}
+.tip-box b{color:var(--green-dark)}
+
+/* 비유 문장 */
+.plain{
+  font-size:1.02rem;
+  background:var(--paper);
+  border:1px dashed var(--green);
+  border-radius:12px;
+  padding:16px 18px;
+  margin-top:14px;
+}
+.plain b{color:var(--green-dark)}
+
+/* 체크리스트 */
+.checklist{list-style:none;margin-top:6px}
+.checklist li{
+  background:var(--paper);
+  border:1px solid var(--green-line);
+  border-radius:10px;
+  padding:13px 15px 13px 44px;
+  margin-bottom:9px;
+  position:relative;
+  font-size:.95rem;
+}
+.checklist li::before{
+  content:'✓';
+  position:absolute;left:14px;top:12px;
+  width:20px;height:20px;
+  background:var(--green);
+  color:#fff;border-radius:6px;
+  font-size:.8rem;font-weight:700;
+  text-align:center;line-height:20px;
+}
+.checklist li b{color:var(--green-dark)}
+.checklist li small{display:block;color:var(--ink-soft);margin-top:2px}
+.call-strong{
+  margin-top:10px;
+  background:var(--warn);
+  color:#fff;
+  border-radius:9px;
+  padding:12px 14px;
+  font-size:.98rem;
+  font-weight:800;
+  line-height:1.5;
+}
+.call-strong a{
+  color:#FFE8A3;
+  text-decoration:underline;
+  font-size:1.15rem;
+  letter-spacing:.02em;
+}
+.call-strong .call-sub{
+  display:block;
+  font-size:.82rem;
+  font-weight:500;
+  opacity:.92;
+  margin-top:3px;
+}
+
+/* 푸터 */
+footer{
+  margin-top:52px;
+  background:var(--green-dark);
+  color:#fff;
+  border-radius:14px;
+  padding:26px 24px;
+  text-align:center;
+}
+footer .name{font-weight:800;font-size:1.05rem;margin-bottom:6px}
+footer .info{font-size:.88rem;opacity:.9;line-height:1.7}
+footer a{color:#CFEBDB;text-decoration:none;font-weight:600}
+.legal{
+  margin-top:18px;
+  font-size:.78rem;
+  color:var(--ink-soft);
+  text-align:center;
+  line-height:1.6;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <div class="office">원제우세무사사무소 · 대표님 안내자료</div>
+    <h1>직원이 모두 퇴사하면,<br>대표님은 뭐가 달라질까요?</h1>
+    <p class="lead">신고는 저희가 처리합니다. 이 자료는 대표님이 <b>직접 체감하시게 될 변화</b>만 쉽게 정리했습니다.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="summary">
+    <span class="tag">한 줄 요약</span>
+    <div>매달 나가던 <strong>인건비는 줄지만</strong>, 대표님 본인의 <strong>건강보험료는 오를 수 있고</strong>, 그동안 <strong>부가세·소득세에서 빠지던 것들이 안 빠지게</strong> 됩니다.</div>
+  </div>
+
+  <section>
+    <h2><span class="num">1</span>건강보험 — 가장 크게 체감하는 변화</h2>
+    <p class="desc">직원이 1명이라도 있으면 대표님도 "직장가입자", 직원이 0명이 되면 자동으로 "지역가입자"로 바뀝니다.</p>
+
+    <div class="before-after">
+      <div class="ba-card before">
+        <div class="label">지금 (직장가입자)</div>
+        <ul>
+          <li>대표님 월급(보수월액) 기준으로만 계산</li>
+          <li>소득에만 보험료 부과</li>
+          <li>집·차가 있어도 보험료와 무관</li>
+        </ul>
+      </div>
+      <div class="ba-card after">
+        <div class="label">직원 퇴사 후 (지역가입자)</div>
+        <ul>
+          <li>사업소득 전체 기준으로 계산</li>
+          <li><b>집 · 토지 · 자동차(재산)</b>까지 합산 부과</li>
+          <li>소득 높고 재산 있으면 보험료 상승</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="plain">쉽게 말해, 지금까지는 <b>"월급쟁이 기준"</b>으로 냈다면, 앞으로는 <b>"가진 재산과 번 소득 전부 기준"</b>으로 내게 됩니다. 아파트가 있으신 대표님은 고지서를 받고 놀라시는 경우가 많습니다.</div>
+
+    <div class="tip-box"><b>미리 확인하세요.</b> 국민건강보험공단 홈페이지의 '지역보험료 모의계산'으로 전환 후 보험료를 미리 확인할 수 있습니다. 저희 사무소에서 함께 계산해 드립니다.</div>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>부가가치세 — 돌려받던 게 줄어듭니다</h2>
+    <p class="desc">직원이 있을 때는 직원을 위한 지출이 사업 비용으로 인정되어 부가세를 돌려받을 수 있었습니다.</p>
+
+    <div class="before-after">
+      <div class="ba-card before">
+        <div class="label">지금 (직원 있을 때)</div>
+        <ul>
+          <li>직원 식대 · 회식비 ✔ 공제</li>
+          <li>작업복 · 간식 · 복리후생 물품 ✔ 공제</li>
+        </ul>
+      </div>
+      <div class="ba-card after">
+        <div class="label">직원 퇴사 후</div>
+        <ul>
+          <li>같은 지출이 <b>대표님 개인 지출</b>로 취급</li>
+          <li>부가세 공제 불가</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="warn-box"><b>주의!</b> 예전 습관대로 식대·회식비를 계속 공제하면, 나중에 세무서에서 부인되어 <b>세금 + 가산세</b>를 추가로 낼 수 있습니다. 카드 사용 패턴을 바꾸셔야 합니다.</div>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>종합소득세 — 비용이 사라져 세금이 늘 수 있습니다</h2>
+    <p class="desc">급여, 퇴직금, 회사가 내주던 직원 보험료, 복리후생비… 이 모든 것이 그동안 "비용"으로 세금을 줄여주고 있었습니다.</p>
+
+    <div class="plain">매출이 그대로인데 비용이 사라지면 → <b>이익이 커진 것으로 계산</b>되어 소득세가 늘어납니다. 그리고 그 늘어난 소득이 다시 <b>지역 건강보험료를 올리는</b> 이중 효과가 생깁니다.</div>
+
+    <div class="warn-box"><b>하나 더 확인할 것.</b> 그동안 직원 채용으로 <b>고용 세액공제</b>를 받으셨다면, 직원 수가 줄어들 때 받았던 공제 일부를 <b>다시 내야 할 수(추가납부)</b> 있습니다. 퇴사 처리 전에 반드시 저희와 먼저 상의해 주세요.</div>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>좋아지는 점도 있습니다</h2>
+    <ul class="checklist">
+      <li><b>인건비 부담 소멸</b><small>급여 + 회사부담 4대보험(급여의 약 10% 이상)이 매달 나가지 않습니다.</small></li>
+      <li><b>급여 관련 업무 소멸</b><small>매달 원천세 신고, 급여대장, 연말정산이 없어져 관리가 단순해집니다.</small></li>
+      <li><b>소득 낮고 재산 적다면 보험료 인하 가능</b><small>반대의 경우도 있으니, 모의계산으로 확인하는 것이 정확합니다.</small>
+        <div class="call-strong">📞 반드시 확인하세요! 국민건강보험공단 콜센터 <a href="tel:1577-1000">1577-1000</a><span class="call-sub">전환 전 예상 보험료를 꼭 문의하세요</span></div>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2><span class="num">5</span>퇴사 전, 이것만 함께 정하세요</h2>
+    <ul class="checklist">
+      <li><b>지역 건강보험료 미리 계산</b><small>전환 후 매달 얼마가 나올지 먼저 확인합니다.</small>
+        <div class="call-strong">📞 국민건강보험공단 콜센터 <a href="tel:1577-1000">1577-1000</a><span class="call-sub">전환 전 예상 보험료, 전화 한 통이면 확인됩니다</span></div>
+      </li>
+      <li><b>고용 세액공제 추가납부 여부 검토</b><small>퇴사 시점에 따라 세금 차이가 클 수 있습니다.</small></li>
+      <li><b>퇴직금 · 마지막 급여 정산 일정</b><small>퇴사 후 14일 이내 지급이 원칙입니다.</small></li>
+      <li><b>카드 사용 습관 점검</b><small>식대·회식비 공제 기준이 달라집니다.</small></li>
+    </ul>
+    <div class="tip-box"><b>결론:</b> 퇴사 자체는 간단하지만, <b>"언제, 어떻게"</b>에 따라 대표님이 내실 돈이 달라집니다. 퇴사 확정 전에 사무소로 먼저 연락 주세요.</div>
+  </section>
+
+  <footer>
+    <div class="name">원제우세무사사무소</div>
+    <div class="info">
+      부천시 소향로 135, 3층 · ☎ 032-321-4521<br>
+      <a href="https://www.taxmancall.com">www.taxmancall.com</a>
+    </div>
+  </footer>
+
+  <div class="legal">본 자료는 일반적인 안내 목적이며, 개별 사안은 사실관계에 따라 달라질 수 있습니다.<br>구체적인 판단은 반드시 상담을 통해 확인하시기 바랍니다.</div>
+
+</div>
+</body>
+</html>
